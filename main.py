@@ -112,6 +112,21 @@ def note_for_key(key_index):
 buttons = []
 active_notes = set()
 
+# Track selector states so debug output only prints when a pot crosses
+# into a different discrete setting.
+last_octave_index = pot_index(octave_pot, len(OCTAVE_ROOTS))
+last_scale_index = pot_index(scale_pot, len(SCALES))
+
+octave_name, ko2_group, _ = OCTAVE_ROOTS[last_octave_index]
+scale_name, _ = SCALES[last_scale_index]
+
+print(
+    "OCTAVE | Octave: {} | KO II Group: {}".format(
+        octave_name, ko2_group
+    )
+)
+print("SCALE  | Scale: {}".format(scale_name))
+
 for key_index, gpio in enumerate(BUTTON_GPIOS):
     pin = Pin(gpio, Pin.IN, Pin.PULL_DOWN)
     initial_state = pin.value()
@@ -130,6 +145,22 @@ for key_index, gpio in enumerate(BUTTON_GPIOS):
 
 while True:
     now = ticks_ms()
+
+    octave_index = pot_index(octave_pot, len(OCTAVE_ROOTS))
+    if octave_index != last_octave_index:
+        last_octave_index = octave_index
+        octave_name, ko2_group, root_note = OCTAVE_ROOTS[octave_index]
+        print(
+            "OCTAVE | Octave: {} | KO II Group: {} | Root MIDI Note: {}".format(
+                octave_name, ko2_group, root_note
+            )
+        )
+
+    scale_index = pot_index(scale_pot, len(SCALES))
+    if scale_index != last_scale_index:
+        last_scale_index = scale_index
+        scale_name, _ = SCALES[scale_index]
+        print("SCALE  | Scale: {}".format(scale_name))
 
     for button in buttons:
         raw_state = button["pin"].value()
