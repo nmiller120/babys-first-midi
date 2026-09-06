@@ -18,6 +18,7 @@ DEBOUNCE_MS = 30
 POT_ADC_MIN = 1000
 POT_ADC_MAX = 56000
 POT_HYSTERESIS = 2000
+POT_DEBOUNCE_MS = 150
 
 # Tiny 2350 onboard RGB LED is on GP18-GP20 and is active-low.
 led_r = Pin(18, Pin.OUT, value=1)
@@ -139,6 +140,11 @@ active_notes = set()
 last_octave_index = pot_index(octave_pot, len(OCTAVE_ROOTS))
 last_scale_index = pot_index(scale_pot, len(SCALES))
 
+octave_candidate_index = last_octave_index
+scale_candidate_index = last_scale_index
+octave_candidate_since = ticks_ms()
+scale_candidate_since = ticks_ms()
+
 octave_name, ko2_group, _ = OCTAVE_ROOTS[last_octave_index]
 scale_name, _ = SCALES[last_scale_index]
 
@@ -171,9 +177,17 @@ while True:
     octave_index = hysteresis_index(
         octave_pot, len(OCTAVE_ROOTS), last_octave_index
     )
-    if octave_index != last_octave_index:
-        last_octave_index = octave_index
-        octave_name, ko2_group, root_note = OCTAVE_ROOTS[octave_index]
+
+    if octave_index != octave_candidate_index:
+        octave_candidate_index = octave_index
+        octave_candidate_since = now
+
+    if (
+        octave_candidate_index != last_octave_index
+        and ticks_diff(now, octave_candidate_since) >= POT_DEBOUNCE_MS
+    ):
+        last_octave_index = octave_candidate_index
+        octave_name, ko2_group, root_note = OCTAVE_ROOTS[last_octave_index]
         print(
             "OCTAVE | Octave: {} | KO II Group: {} | Root MIDI Note: {}".format(
                 octave_name, ko2_group, root_note
@@ -183,9 +197,17 @@ while True:
     scale_index = hysteresis_index(
         scale_pot, len(SCALES), last_scale_index
     )
-    if scale_index != last_scale_index:
-        last_scale_index = scale_index
-        scale_name, _ = SCALES[scale_index]
+
+    if scale_index != scale_candidate_index:
+        scale_candidate_index = scale_index
+        scale_candidate_since = now
+
+    if (
+        scale_candidate_index != last_scale_index
+        and ticks_diff(now, scale_candidate_since) >= POT_DEBOUNCE_MS
+    ):
+        last_scale_index = scale_candidate_index
+        scale_name, _ = SCALES[last_scale_index]
         print("SCALE  | Scale: {}".format(scale_name))
 
     for button in buttons:
