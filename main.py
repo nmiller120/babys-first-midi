@@ -13,6 +13,11 @@ MIDI_CHANNEL = 1
 MIDI_VELOCITY = 100
 DEBOUNCE_MS = 30
 
+# Calibrated usable range of both 10k potentiometers.
+# Clamp the physical end regions so every selector position is easy to reach.
+POT_ADC_MIN = 1000
+POT_ADC_MAX = 56000
+
 # Tiny 2350 onboard RGB LED is on GP18-GP20 and is active-low.
 led_r = Pin(18, Pin.OUT, value=1)
 led_g = Pin(19, Pin.OUT, value=1)
@@ -72,11 +77,19 @@ def note_off(note, velocity=0, channel=MIDI_CHANNEL):
 
 def pot_index(adc, option_count):
     """
-    Divide the full 16-bit ADC reading into equal-width settings.
-    read_u16() returns 0..65535.
+    Divide the calibrated potentiometer range into equal-width settings.
+
+    Values at or below POT_ADC_MIN select the first setting.
+    Values at or above POT_ADC_MAX select the last setting.
     """
     raw = adc.read_u16()
-    index = (raw * option_count) // 65536
+    raw = max(POT_ADC_MIN, min(raw, POT_ADC_MAX))
+
+    span = POT_ADC_MAX - POT_ADC_MIN
+    normalized = raw - POT_ADC_MIN
+
+    # Map the full calibrated range across all available settings.
+    index = (normalized * option_count) // (span + 1)
     return min(index, option_count - 1)
 
 
