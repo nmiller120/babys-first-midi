@@ -36,10 +36,10 @@ scale_pot = ADC(27)
 # C4=60 -> Group C
 # C5=72 -> Group D
 OCTAVE_ROOTS = (
-    ("C2", 36),
-    ("C3", 48),
-    ("C4", 60),
-    ("C5", 72),
+    ("C2", "A", 36),
+    ("C3", "B", 48),
+    ("C4", "C", 60),
+    ("C5", "D", 72),
 )
 
 # A1 selects the interval pattern used by the five keys.
@@ -102,9 +102,11 @@ def selected_scale():
 
 
 def note_for_key(key_index):
-    _, root_note = selected_root()
-    _, intervals = selected_scale()
-    return root_note + intervals[key_index]
+    octave_name, ko2_group, root_note = selected_root()
+    scale_name, intervals = selected_scale()
+    note = root_note + intervals[key_index]
+
+    return note, octave_name, ko2_group, scale_name
 
 
 buttons = []
@@ -146,8 +148,20 @@ while True:
 
             if raw_state:
                 # Read both pots at the instant the key is pressed.
-                note = note_for_key(button["key_index"])
+                note, octave_name, ko2_group, scale_name = note_for_key(
+                    button["key_index"]
+                )
                 button["active_note"] = note
+
+                print(
+                    "PRESS | Octave: {} | KO II Group: {} | Scale: {} | MIDI Note: {}".format(
+                        octave_name,
+                        ko2_group,
+                        scale_name,
+                        note,
+                    )
+                )
+
                 note_on(note)
                 active_notes.add(note)
             else:
