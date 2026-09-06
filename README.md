@@ -1,1 +1,1 @@
-# babys-first-midi-controller
+# babys-first-midi
