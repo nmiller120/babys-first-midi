@@ -1,4 +1,4 @@
-from machine import UART, Pin
+from machine import UART, Pin, ADC
 from time import sleep_ms, ticks_ms, ticks_diff
 
 # MIDI 1.0 serial: 31,250 baud, 8-N-1.
@@ -18,19 +18,38 @@ led_r = Pin(18, Pin.OUT, value=1)
 led_g = Pin(19, Pin.OUT, value=1)
 led_b = Pin(20, Pin.OUT, value=1)
 
-# Fisher-Price keys are expected to be active-high.
-# For bench testing with jumpers, enable the RP2350's internal pull-downs
-# so each input has a defined LOW state when nothing is connected.
-#
-# Standard MIDI note numbers:
-# C3=48, D3=50, E3=52, F3=53, G3=55
-BUTTON_CONFIG = (
-    (1, 48),  # GP1 -> C3
-    (2, 50),  # GP2 -> D3
-    (3, 52),  # GP3 -> E3
-    (4, 53),  # GP4 -> F3
-    (5, 55),  # GP5 -> G3
+# Tiny 2350 analog inputs.
+# A0 = GP26 / ADC0
+# A1 = GP27 / ADC1
+octave_pot = ADC(26)
+scale_pot = ADC(27)
+
+# A0 selects the C-root octave. These line up with the KO II's
+# four fixed MIDI note groups:
+# C2=36 -> Group A
+# C3=48 -> Group B
+# C4=60 -> Group C
+# C5=72 -> Group D
+OCTAVE_ROOTS = (
+    ("C2", 36),
+    ("C3", 48),
+    ("C4", 60),
+    ("C5", 72),
 )
+
+# A1 selects the interval pattern used by the five keys.
+# Intervals are semitones above the selected C root.
+SCALES = (
+    ("Chromatic",       (0, 1, 2, 3, 4)),
+    ("Major",           (0, 2, 4, 5, 7)),
+    ("Minor",           (0, 2, 3, 5, 7)),
+    ("Minor Pentatonic",(0, 3, 5, 7, 10)),
+    ("Major Pentatonic",(0, 2, 4, 7, 9)),
+)
+
+# Fisher-Price keys are expected to be active-high.
+# Internal pull-downs keep the inputs defined during jumper testing.
+BUTTON_GPIOS = (1, 2, 3, 4, 5)
 
 
 def set_led(on):
@@ -51,19 +70,46 @@ def note_off(note, velocity=0, channel=MIDI_CHANNEL):
     midi.write(bytes((status, note, velocity)))
 
 
+def pot_index(adc, option_count):
+    """
+    Divide the full 16-bit ADC reading into equal-width settings.
+    read_u16() returns 0..65535.
+    """
+    raw = adc.read_u16()
+    index = (raw * option_count) // 65536
+    return min(index, option_count - 1)
+
+
+def selected_root():
+    return OCTAVE_ROOTS[pot_index(octave_pot, len(OCTAVE_ROOTS))]
+
+
+def selected_scale():
+    return SCALES[pot_index(scale_pot, len(SCALES))]
+
+
+def note_for_key(key_index):
+    _, root_note = selected_root()
+    _, intervals = selected_scale()
+    return root_note + intervals[key_index]
+
+
 buttons = []
 active_notes = set()
 
-for gpio, note in BUTTON_CONFIG:
+for key_index, gpio in enumerate(BUTTON_GPIOS):
     pin = Pin(gpio, Pin.IN, Pin.PULL_DOWN)
     initial_state = pin.value()
 
     buttons.append({
         "pin": pin,
-        "note": note,
+        "key_index": key_index,
         "raw_state": initial_state,
         "stable_state": initial_state,
         "changed_at": ticks_ms(),
+        # Remember the exact note started by this key so Note Off still
+        # targets the correct note if either pot moves while it is held.
+        "active_note": None,
     })
 
 
@@ -84,19 +130,23 @@ while True:
             and ticks_diff(now, button["changed_at"]) >= DEBOUNCE_MS
         ):
             button["stable_state"] = raw_state
-            note = button["note"]
 
             if raw_state:
-                # Note stays on for as long as the input remains HIGH.
+                # Read both pots at the instant the key is pressed.
+                note = note_for_key(button["key_index"])
+                button["active_note"] = note
                 note_on(note)
                 active_notes.add(note)
             else:
-                note_off(note)
-                active_notes.discard(note)
+                note = button["active_note"]
 
-            # Keep the LED lit while one or more notes are being sustained.
+                if note is not None:
+                    note_off(note)
+                    active_notes.discard(note)
+                    button["active_note"] = None
+
+            # Keep the LED lit while one or more notes are sustained.
             set_led(bool(active_notes))
 
-    # Each key is debounced independently, so multiple held keys remain
-    # active at once and the controller stays polyphonic.
+    # Independent debounce keeps simultaneous key presses polyphonic.
     sleep_ms(1)
