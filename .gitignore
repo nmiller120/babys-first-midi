@@ -1,0 +1,14 @@
+# Python / MicroPython
+__pycache__/
+*.py[cod]
+*.mpy
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
