@@ -17,6 +17,7 @@ DEBOUNCE_MS = 30
 # Clamp the physical end regions so every selector position is easy to reach.
 POT_ADC_MIN = 1000
 POT_ADC_MAX = 56000
+POT_HYSTERESIS = 2000
 
 # Tiny 2350 onboard RGB LED is on GP18-GP20 and is active-low.
 led_r = Pin(18, Pin.OUT, value=1)
@@ -77,10 +78,8 @@ def note_off(note, velocity=0, channel=MIDI_CHANNEL):
 
 def pot_index(adc, option_count):
     """
-    Divide the calibrated potentiometer range into equal-width settings.
-
-    Values at or below POT_ADC_MIN select the first setting.
-    Values at or above POT_ADC_MAX select the last setting.
+    Return the raw selector region with no hysteresis.
+    Used only to establish the initial selector state at startup.
     """
     raw = adc.read_u16()
     raw = max(POT_ADC_MIN, min(raw, POT_ADC_MAX))
@@ -88,22 +87,45 @@ def pot_index(adc, option_count):
     span = POT_ADC_MAX - POT_ADC_MIN
     normalized = raw - POT_ADC_MIN
 
-    # Map the full calibrated range across all available settings.
     index = (normalized * option_count) // (span + 1)
     return min(index, option_count - 1)
 
 
-def selected_root():
-    return OCTAVE_ROOTS[pot_index(octave_pot, len(OCTAVE_ROOTS))]
+def hysteresis_index(adc, option_count, current_index):
+    """
+    Update a discrete pot selector using hysteresis around each boundary.
 
+    The knob must move POT_HYSTERESIS counts past a boundary before the
+    state changes. Once changed, it must move back past the opposite side
+    of that deadband before changing back.
+    """
+    raw = adc.read_u16()
+    raw = max(POT_ADC_MIN, min(raw, POT_ADC_MAX))
 
-def selected_scale():
-    return SCALES[pot_index(scale_pot, len(SCALES))]
+    span = POT_ADC_MAX - POT_ADC_MIN
+    region_width = span / option_count
+
+    # Allow large knob movements to cross more than one state in one pass.
+    while current_index < option_count - 1:
+        upper_boundary = POT_ADC_MIN + ((current_index + 1) * region_width)
+        if raw >= upper_boundary + POT_HYSTERESIS:
+            current_index += 1
+        else:
+            break
+
+    while current_index > 0:
+        lower_boundary = POT_ADC_MIN + (current_index * region_width)
+        if raw <= lower_boundary - POT_HYSTERESIS:
+            current_index -= 1
+        else:
+            break
+
+    return current_index
 
 
 def note_for_key(key_index):
-    octave_name, ko2_group, root_note = selected_root()
-    scale_name, intervals = selected_scale()
+    octave_name, ko2_group, root_note = OCTAVE_ROOTS[last_octave_index]
+    scale_name, intervals = SCALES[last_scale_index]
     note = root_note + intervals[key_index]
 
     return note, octave_name, ko2_group, scale_name
@@ -146,7 +168,9 @@ for key_index, gpio in enumerate(BUTTON_GPIOS):
 while True:
     now = ticks_ms()
 
-    octave_index = pot_index(octave_pot, len(OCTAVE_ROOTS))
+    octave_index = hysteresis_index(
+        octave_pot, len(OCTAVE_ROOTS), last_octave_index
+    )
     if octave_index != last_octave_index:
         last_octave_index = octave_index
         octave_name, ko2_group, root_note = OCTAVE_ROOTS[octave_index]
@@ -156,7 +180,9 @@ while True:
             )
         )
 
-    scale_index = pot_index(scale_pot, len(SCALES))
+    scale_index = hysteresis_index(
+        scale_pot, len(SCALES), last_scale_index
+    )
     if scale_index != last_scale_index:
         last_scale_index = scale_index
         scale_name, _ = SCALES[scale_index]
