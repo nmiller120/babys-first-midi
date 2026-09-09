@@ -2,6 +2,219 @@
   (uuid 00000000-0000-0000-0000-000000000001)
   (paper "A4")
   (lib_symbols)
+
+  (text "BABY'S FIRST MIDI — REV A ARCHITECTURE"
+    (exclude_from_sim no)
+    (at 25.4 20.32 0)
+    (effects (font (size 2.54 2.54) (thickness 0.5)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000001)
+  )
+
+  (text "External project box. Tiny 2350 powered independently over onboard USB-C."
+    (exclude_from_sim no)
+    (at 25.4 27.94 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000002)
+  )
+
+  (rectangle
+    (start 25.4 40.64)
+    (end 63.5 91.44)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 20000000-0000-0000-0000-000000000001)
+  )
+  (text "RJ45 INPUT"
+    (exclude_from_sim no)
+    (at 29.21 46.99 0)
+    (effects (font (size 1.778 1.778) (thickness 0.3)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000003)
+  )
+  (text "KEY_C"
+    (exclude_from_sim no)
+    (at 29.21 55.88 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000004)
+  )
+  (text "KEY_D"
+    (exclude_from_sim no)
+    (at 29.21 61.0 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000005)
+  )
+  (text "KEY_E"
+    (exclude_from_sim no)
+    (at 29.21 66.12 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000006)
+  )
+  (text "KEY_F"
+    (exclude_from_sim no)
+    (at 29.21 71.24 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000007)
+  )
+  (text "KEY_G"
+    (exclude_from_sim no)
+    (at 29.21 76.36 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000008)
+  )
+  (text "COMMON"
+    (exclude_from_sim no)
+    (at 29.21 83.82 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000009)
+  )
+
+  (rectangle
+    (start 76.2 40.64)
+    (end 121.92 91.44)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 20000000-0000-0000-0000-000000000002)
+  )
+  (text "5x MOSFET INPUT BUFFER"
+    (exclude_from_sim no)
+    (at 80.01 46.99 0)
+    (effects (font (size 1.778 1.778) (thickness 0.3)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000010)
+  )
+  (text "One discrete buffer per FPT key"
+    (exclude_from_sim no)
+    (at 80.01 55.88 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000011)
+  )
+  (text "Preserve proven MOSFET level/buffer stage"
+    (exclude_from_sim no)
+    (at 80.01 62.23 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000012)
+  )
+  (text "Outputs are 3.3 V-safe GPIO signals"
+    (exclude_from_sim no)
+    (at 80.01 68.58 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000013)
+  )
+  (text "COMMON remains on input side"
+    (exclude_from_sim no)
+    (at 80.01 81.28 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000014)
+  )
+
+  (rectangle
+    (start 137.16 40.64)
+    (end 177.8 91.44)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 20000000-0000-0000-0000-000000000003)
+  )
+  (text "TINY 2350"
+    (exclude_from_sim no)
+    (at 140.97 46.99 0)
+    (effects (font (size 1.778 1.778) (thickness 0.3)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000015)
+  )
+  (text "USB-C power on module"
+    (exclude_from_sim no)
+    (at 140.97 55.88 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000016)
+  )
+  (text "5x digital inputs"
+    (exclude_from_sim no)
+    (at 140.97 62.23 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000017)
+  )
+  (text "2x analog pot inputs"
+    (exclude_from_sim no)
+    (at 140.97 68.58 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000018)
+  )
+  (text "UART TX -> MIDI OUT"
+    (exclude_from_sim no)
+    (at 140.97 74.93 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000019)
+  )
+
+  (rectangle
+    (start 137.16 104.14)
+    (end 177.8 132.08)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 20000000-0000-0000-0000-000000000004)
+  )
+  (text "CONTROL POTS"
+    (exclude_from_sim no)
+    (at 140.97 110.49 0)
+    (effects (font (size 1.778 1.778) (thickness 0.3)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000020)
+  )
+  (text "A0 — Octave"
+    (exclude_from_sim no)
+    (at 140.97 118.11 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000021)
+  )
+  (text "A1 — Scale"
+    (exclude_from_sim no)
+    (at 140.97 124.46 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000022)
+  )
+
+  (rectangle
+    (start 193.04 40.64)
+    (end 238.76 91.44)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 20000000-0000-0000-0000-000000000005)
+  )
+  (text "MIDI OUT"
+    (exclude_from_sim no)
+    (at 196.85 46.99 0)
+    (effects (font (size 1.778 1.778) (thickness 0.3)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000023)
+  )
+  (text "Tiny 2350 UART TX"
+    (exclude_from_sim no)
+    (at 196.85 55.88 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000024)
+  )
+  (text "-> MIDI output interface"
+    (exclude_from_sim no)
+    (at 196.85 62.23 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000025)
+  )
+  (text "-> TRS MIDI jack"
+    (exclude_from_sim no)
+    (at 196.85 68.58 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000026)
+  )
+
+  (text "SIGNAL FLOW: RJ45 -> 5x MOSFET buffers -> Tiny 2350 -> MIDI OUT"
+    (exclude_from_sim no)
+    (at 25.4 149.86 0)
+    (effects (font (size 1.524 1.524) (thickness 0.25)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000027)
+  )
+
+  (text "NOTE: This sheet captures Rev A architecture only. Exact MOSFET, resistor, connector pinout, and MIDI component values will be populated after KiCad 10.0.6 opens/saves the project and the proven breadboard wiring is transcribed."
+    (exclude_from_sim no)
+    (at 25.4 160.02 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 10000000-0000-0000-0000-000000000028)
+  )
+
   (sheet_instances
     (path "/" (page "1"))
   )
