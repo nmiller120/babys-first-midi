@@ -1,8 +1,8 @@
 # Drawing-based replacement models
 
 The WH148 potentiometers and Tiny 2350 now use custom drawing-based models.
-RJ45 and TRS models remain illustrative placeholders; their footprints still
-require checking against the actual purchased parts.
+The RJ45 model remains an illustrative placeholder; its footprint still
+requires checking against the actual purchased part.
 
 ## WH148 potentiometers
 
@@ -41,10 +41,30 @@ The mounted model assumes 2.54 mm male header spacers and lifts the bare module
 and fine details absent from the drawing are visual estimates. This is custom
 CAD, not a manufacturer-supplied STEP model or an enclosure-fit certification.
 
+## PJ-320A MIDI jack
+
+J2 now uses the Keebio PJ-320A STEP and a locally adapted footprint:
+https://github.com/keebio/Keebio-Parts.pretty/blob/master/3dmodels/PJ-320A.step
+https://github.com/keebio/Keebio-Parts.pretty/blob/master/TRRS-PJ-320A.kicad_mod
+The MIT license is preserved in LICENSE-Keebio.txt.
+
+The user's supplied uxcell pinout identifies sleeve=1, tip=4, ring1=3, ring2=2.
+This overrides the tip/ring2 labels in the upstream footprint. Pin 4 carries
+MIDI_TIP and pin 3 carries MIDI_RING. Ring2 (pin 2) is unused; sleeve (pin 1)
+remains unconnected, preserving the old design's sleeve treatment. No claim
+of complete MIDI electrical compliance or schematic parity is made here.
+
+The footprint retains four plated slots and two locating holes from Keebio.
+Its outline was adapted to clear solder mask and the board edge. The connector
+faces right at (138,86) mm, with the mouth at the board edge. Its 3D geometry
+and locating-hole dimensions come from the community model, not an uxcell
+dimensional drawing. The supplied image establishes the electrical pinout.
+
 ## Validation
 
 KiCad 10.0.6 loads the board and renders the bundled models. All 26 components
-and every existing numbered pad's net assignment are preserved. The corrected
-pad geometry was rerouted and ground copper refilled. validation/drc.json
+and all pad-to-net assignments outside J2 are preserved. J2's original tip/ring
+nets are remapped by function to pins 4/3. The corrected pad geometry was
+rerouted and ground copper refilled. validation/drc.json
 reports zero violations and zero unconnected items. Schematic parity and the
 remaining draft connector footprints are outside this verification.
