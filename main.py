@@ -55,7 +55,6 @@ SCALES = (
 )
 
 # Fisher-Price keys are expected to be active-high.
-# Internal pull-downs keep the inputs defined during jumper testing.
 BUTTON_GPIOS = (1, 2, 3, 4, 5)
 
 
@@ -156,7 +155,7 @@ print(
 print("SCALE  | Scale: {}".format(scale_name))
 
 for key_index, gpio in enumerate(BUTTON_GPIOS):
-    pin = Pin(gpio, Pin.IN, Pin.PULL_DOWN)
+    pin = Pin(gpio, Pin.IN)
     initial_state = pin.value()
 
     buttons.append({
