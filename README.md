@@ -120,6 +120,45 @@ The `Tests` directory contains development/bench scripts.
 
 - `Test001.py` - initial UART MIDI and onboard LED test.
 - `Test002.py` - periodically prints raw A0/A1 ADC readings and approximate voltages for potentiometer testing and calibration.
+- `Test003.py` - SSD1306 128x64 I2C OLED hello-world test with a changing counter.
+
+### Running Test003: OLED hello world
+
+For the Hosyond 0.96-inch 128x64 SSD1306 I2C module (Amazon B09T6SJBV5):
+
+| Display label | Tiny 2350 connection |
+| --- | --- |
+| GND | GND |
+| VCC | 3V3 |
+| SDA | GP6 |
+| SCL | GP7 |
+
+Wire with power disconnected and follow the printed labels, not the physical
+header order. Power this module from 3V3 so its I2C pull-ups use 3.3 V logic.
+These are the Tiny's numbered GPIO pins, not its separate Qw/ST connector.
+
+1. Connect the Tiny in Thonny using its MicroPython interpreter. Stop the
+   running controller with Stop/Restart or Ctrl+C.
+2. Save the bundled `Tests/ssd1306.py` onto the Tiny as
+   `/lib/ssd1306.py` (create the `lib` folder if needed).
+3. Open `Tests/Test003.py` in Thonny and click Run. It can run from the
+   computer; there is no need to replace the Tiny's `main.py`.
+4. The console prints discovered I2C addresses. The screen should show
+   **Hello world!**, **Baby's First MIDI - Test003** across two lines, the
+   selected address, and a count updated approximately once per second.
+5. Press Ctrl+C to stop; the script blanks the screen.
+
+The test uses I2C1 at 100 kHz and detects 0x3C or 0x3D (preferring 0x3C if
+both respond). An address response alone does not identify the controller;
+this test expects the SSD1306 module listed above. If nothing is detected,
+check power and the SDA/SCL wiring. An import error means the driver has not
+been saved to the Tiny's `/lib` folder. This is a standalone display test;
+it does not run the piano/MIDI controller at the same time.
+
+The bundled driver is an unmodified copy from
+[MicroPython's SSD1306 driver](https://github.com/micropython/micropython-lib/blob/master/micropython/drivers/display/ssd1306/ssd1306.py),
+Git blob `37ad682de94a11687c6afdac8cdc4dc88eb2b46c`.
+Its license is included in `Tests/LICENSE-ssd1306.txt`.
 
 ## Development status
 
