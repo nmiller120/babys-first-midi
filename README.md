@@ -24,7 +24,7 @@ Five active-high digital inputs are mapped to the Fisher-Price piano keys:
 | GP4 | Key 4 |
 | GP5 | Key 5 |
 
-The inputs currently use the RP2350 internal pull-downs. A press sends MIDI Note On and releasing the key sends MIDI Note Off. Notes sustain for as long as a key is held, and multiple keys can be held simultaneously for polyphonic MIDI.
+The GPIOs are configured as plain digital inputs with no internal pull-up or pull-down. A press sends MIDI Note On and releasing the key sends MIDI Note Off. Notes sustain for as long as a key is held, and multiple keys can be held simultaneously for polyphonic MIDI.
 
 The key inputs use a 30 ms software debounce.
 
