@@ -96,9 +96,29 @@ IMPORTANT: Verify wiring and polarity before connecting an instrument. The KO II
 
 The Tiny 2350 onboard RGB LED is used as a MIDI activity indicator. It lights white while one or more notes are being held and turns off when the final active note is released.
 
+## OLED readout
+
+`main.py` shows the stable octave (C2-C5), KO II group (A-D), and full scale
+name on the 128x64 SSD1306 OLED. It uses the same working SoftI2C setup as
+Test003: SDA=GP6, SCL=GP7, VCC=3V3, GND=GND at 100 kHz. Keep the bundled
+`Tests/ssd1306.py` installed as `/lib/ssd1306.py` on the Tiny.
+
+The readout follows the filtered selections used for MIDI notes. Screen
+updates occur on startup and selection changes, with 32-byte transfers
+between key scans. A missing driver/display or I2C error disables the
+readout for that run while the MIDI controller continues. Restart after
+fixing the connection to enable the display again.
+
+To deploy, open the updated `main.py` in Thonny and save it to the Tiny as
+`/main.py`. Run it with F5; it will also run on subsequent board resets.
+
 ## Debug output
 
-During development, `main.py` prints state changes to the MicroPython console.
+`main.py` has a hardcoded `DEBUG = False` flag near the top. Set it to `True`
+to print startup selections, pot changes, key presses, and display diagnostics
+to the USB MicroPython console. With `False`, application logging is silent;
+MIDI UART messages and OLED updates still operate. MicroPython's own boot
+banner and unhandled tracebacks are not controlled by this flag.
 
 Changing the octave/group pot produces output similar to:
 
