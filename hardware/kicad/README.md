@@ -29,23 +29,23 @@ kicad-cli pcb drc --refill-zones --format json --exit-code-violations --output v
 ```
 
 This remains the prototype experiment described in the earlier design work:
-the connector, potentiometer, and module footprints are project-specific draft
-geometries, not verified manufacturer land patterns. The clean result verifies
-board geometry and connectivity against the PCB net assignments; it does not
-certify component fit, Tiny 2350 mechanical orientation, or schematic parity.
-Select exact parts and check the schematic/pin mapping and physical dimensions
-before treating this as a manufacturing release.
+the connector footprints remain project-specific draft geometries. The clean
+result verifies board geometry and connectivity against the PCB net assignments;
+it does not certify the remaining connector fit, enclosure fit or schematic parity.
 
 ## Populated 3D view
 
 In PCB Editor, use View > 3D Viewer (Alt+3). Models are attached to the board
 and to the project footprint library. Resistors and MOSFETs use KiCad's standard
 STEP models; install the KiCad 10 3D model library if these do not appear.
-The custom RJ45, TRS jack, potentiometers and socketed Tiny module use the
-included `3dmodels/*_Illustrative.wrl` models. These are simplified visual aids
-matched to the draft footprints, not vendor models or evidence of mechanical
-fit/pinout correctness. In particular, the Tiny's illustrated right-facing USB
-connector remains a design intent that needs checking against the real module.
+The RJ45 and TRS jack still use illustrative models. The WH148 pots and Tiny
+2350 now use the bundled drawing-based replacement models. Their geometry,
+source drawings and remaining estimates are documented in
+`3dmodels/MECHANICAL_NOTES.md`.
 
-Adding the models changes no pads, tracks, nets, or placement. KiCad 10.0.6
-DRC remains at zero violations and zero unconnected items.
+The WH148 replacement changes the old 3 mm pitch to 5 mm, with 1.3 mm holes.
+Pots mount directly, shafts parallel to the board toward the top edge. The Tiny
+footprint's mirrored banks are corrected and the module is rotated and moved
+to put USB at the right edge. Routing and ground fill are regenerated while
+preserving all numbered pad-to-net assignments. KiCad 10.0.6 DRC reports zero
+violations and zero unconnected items; see `validation/drc.json`.
