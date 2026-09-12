@@ -6,7 +6,7 @@ Copy the bundled ssd1306.py to the Tiny's /lib directory, then run this
 file in Thonny. Press Ctrl+C to stop and blank the display.
 """
 
-from machine import I2C, Pin
+from machine import SoftI2C, Pin
 from time import sleep_ms
 
 try:
@@ -18,13 +18,12 @@ WIDTH = 128
 HEIGHT = 64
 SDA_PIN = 6
 SCL_PIN = 7
-I2C_BUS = 1
 I2C_FREQ = 100_000
 
 
 def main():
-    print("Test003: SSD1306 OLED on GP6 (SDA), GP7 (SCL)")
-    i2c = I2C(I2C_BUS, sda=Pin(SDA_PIN), scl=Pin(SCL_PIN), freq=I2C_FREQ)
+    print("Test003: SSD1306 OLED (SoftI2C) on GP6 (SDA), GP7 (SCL)")
+    i2c = SoftI2C(sda=Pin(SDA_PIN), scl=Pin(SCL_PIN), freq=I2C_FREQ)
     sleep_ms(100)
     devices = i2c.scan()
     print("I2C addresses:", [hex(address) for address in devices])
