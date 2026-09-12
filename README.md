@@ -148,7 +148,7 @@ These are the Tiny's numbered GPIO pins, not its separate Qw/ST connector.
    selected address, and a count updated approximately once per second.
 5. Press Ctrl+C to stop; the script blanks the screen.
 
-The test uses I2C1 at 100 kHz and detects 0x3C or 0x3D (preferring 0x3C if
+The test uses software I2C (SoftI2C) at 100 kHz and detects 0x3C or 0x3D (preferring 0x3C if
 both respond). An address response alone does not identify the controller;
 this test expects the SSD1306 module listed above. If nothing is detected,
 check power and the SDA/SCL wiring. An import error means the driver has not
