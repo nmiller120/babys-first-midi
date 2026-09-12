@@ -27,13 +27,13 @@ Two 10k potentiometers connect directly to Tiny 2350 analog inputs.
 
 ## Digital input buffers
 
-Five identical IRLZ44N channels are used.
+Five identical 2N7000 channels are used.
 
 For each channel:
 
-- Fisher-Price sense line -> 100k ohm -> IRLZ44N gate
-- IRLZ44N source -> GND
-- IRLZ44N drain -> Tiny 2350 GPIO
+- Fisher-Price sense line -> 100k ohm -> 2N7000 gate
+- 2N7000 source -> GND
+- 2N7000 drain -> Tiny 2350 GPIO
 - 3V3 -> 10k ohm pull-up -> drain/GPIO node
 
 This is an inverting open-drain-style buffer stage.
@@ -78,7 +78,7 @@ No Fisher-Price power is brought into the project box.
 The KiCad schematic should contain:
 
 - J1: 8-pin RJ45 female connector
-- Q1-Q5: IRLZ44N
+- Q1-Q5: 2N7000
 - R1-R5: 100k gate resistors
 - R6-R10: 10k GPIO pull-ups
 - U1: Pimoroni Tiny 2350 module/header representation
@@ -90,3 +90,20 @@ The KiCad schematic should contain:
 - No-connect markers on unused RJ45 pins and TRS sleeve where appropriate
 
 Before Gerber generation, the schematic must pass ERC with no unexplained errors and the PCB must pass DRC with no unexplained errors.
+
+
+## 2N7000 input buffers
+
+Q1-Q5 now use through-hole 2N7000 MOSFETs with the onsemi 2N7000TA
+TO-92 pinout: 1=source (GND), 2=gate (input resistor), 3=drain (GPIO/pull-up).
+Datasheet: https://www.onsemi.com/download/data-sheet/pdf/2n7000ta-d.pdf
+The local BFM:TO-92_2N7000_SGD footprint derives from KiCad's
+TO-92_Inline_Wide footprint. Its 2.54 mm hole spacing requires spreading the
+leads; match the flat face to the fabrication outline. The 3D model is the
+standard KiCad 10 TO-92_Inline_Wide STEP model.
+
+PCB nets and schematic connections were checked against the previous design
+by gate/drain/source function, including the required pin-number remap.
+KiCad 10.0.6 DRC reports zero violations and zero unconnected items.
+This verifies layout connectivity, not operation with the toy's unmeasured
+signal voltage. Verify input switching on the assembled prototype.

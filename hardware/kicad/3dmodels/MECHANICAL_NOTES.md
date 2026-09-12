@@ -64,8 +64,25 @@ dimensional drawing. The supplied image establishes the electrical pinout.
 ## Validation
 
 KiCad 10.0.6 loads the board and renders the bundled models. All 26 components
-and all pad-to-net assignments outside J2 are preserved. J2's original tip/ring
+and signal connections are preserved by function (J2 and Q1-Q5 use remapped pin numbers). J2's original tip/ring
 nets are remapped by function to pins 4/3. The corrected pad geometry was
 rerouted and ground copper refilled. validation/drc.json
 reports zero violations and zero unconnected items. Schematic parity and the
 remaining draft connector footprints are outside this verification.
+
+
+## 2N7000 input buffers
+
+Q1-Q5 now use through-hole 2N7000 MOSFETs with the onsemi 2N7000TA
+TO-92 pinout: 1=source (GND), 2=gate (input resistor), 3=drain (GPIO/pull-up).
+Datasheet: https://www.onsemi.com/download/data-sheet/pdf/2n7000ta-d.pdf
+The local BFM:TO-92_2N7000_SGD footprint derives from KiCad's
+TO-92_Inline_Wide footprint. Its 2.54 mm hole spacing requires spreading the
+leads; match the flat face to the fabrication outline. The 3D model is the
+standard KiCad 10 TO-92_Inline_Wide STEP model.
+
+PCB nets and schematic connections were checked against the previous design
+by gate/drain/source function, including the required pin-number remap.
+KiCad 10.0.6 DRC reports zero violations and zero unconnected items.
+This verifies layout connectivity, not operation with the toy's unmeasured
+signal voltage. Verify input switching on the assembled prototype.

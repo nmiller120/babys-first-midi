@@ -64,3 +64,20 @@ signal nets are preserved; shield pads are unconnected. See
 `RJ45_CONTINUITY_CHECK.md` for the precise mapping to check when the parts arrive.
 Rerouting and ground refill pass KiCad 10.0.6 DRC: zero violations and zero
 unconnected items.
+
+
+## 2N7000 input buffers
+
+Q1-Q5 now use through-hole 2N7000 MOSFETs with the onsemi 2N7000TA
+TO-92 pinout: 1=source (GND), 2=gate (input resistor), 3=drain (GPIO/pull-up).
+Datasheet: https://www.onsemi.com/download/data-sheet/pdf/2n7000ta-d.pdf
+The local BFM:TO-92_2N7000_SGD footprint derives from KiCad's
+TO-92_Inline_Wide footprint. Its 2.54 mm hole spacing requires spreading the
+leads; match the flat face to the fabrication outline. The 3D model is the
+standard KiCad 10 TO-92_Inline_Wide STEP model.
+
+PCB nets and schematic connections were checked against the previous design
+by gate/drain/source function, including the required pin-number remap.
+KiCad 10.0.6 DRC reports zero violations and zero unconnected items.
+This verifies layout connectivity, not operation with the toy's unmeasured
+signal voltage. Verify input switching on the assembled prototype.
