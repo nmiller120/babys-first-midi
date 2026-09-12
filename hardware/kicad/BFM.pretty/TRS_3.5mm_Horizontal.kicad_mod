@@ -6,7 +6,7 @@
 	(property "Reference" "J2"
 		(at 0 -8 0)
 		(layer "F.SilkS")
-		(uuid "145c0b69-aae4-4e00-982e-52381811ad87")
+		(uuid "5560bbc5-d8ca-433d-be93-b903ecc080ff")
 		(effects
 			(font
 				(size 1 1)
@@ -18,7 +18,7 @@
 		(at 0 8 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "4c2ef118-a0fa-4163-bc83-bfa56c281cf9")
+		(uuid "461d4522-2778-488a-bfbb-986cc4a67be0")
 		(effects
 			(font
 				(size 1 1)
@@ -30,7 +30,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "3b2439b6-b6c2-4c05-976c-a38a4d96b566")
+		(uuid "21778557-fe9a-419d-a19b-7eba47fe657d")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "f2b7f6fc-584d-4284-bd74-95a737403091")
+		(uuid "414ea82a-8ac6-40d0-8840-de2dbeeeb3ae")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,12 +58,12 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000166")
+		(uuid "5fd18120-32aa-47bb-8bb7-1412f5eb78cb")
 	)
 	(fp_text user "MIDI OUT"
 		(at 0 -5 0)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000162")
+		(uuid "ab978714-5b41-4386-9db0-d5169ef110ef")
 		(effects
 			(font
 				(size 1 1)
@@ -77,7 +77,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000159")
+		(uuid "ed1b7e4e-2ef6-4b90-9374-ccce6442dcb4")
 	)
 	(pad "2" thru_hole circle
 		(at -3 0)
@@ -85,7 +85,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000160")
+		(uuid "6d4be92a-13ea-4915-b1a1-0f209e724d63")
 	)
 	(pad "3" thru_hole circle
 		(at -3 3)
@@ -93,7 +93,18 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000161")
+		(uuid "811f440d-e8bd-4074-92cf-7ee251d6811e")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/TRS_Illustrative.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

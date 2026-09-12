@@ -6,7 +6,7 @@
 	(property "Reference" "Q1"
 		(at 0 -5 270)
 		(layer "F.SilkS")
-		(uuid "9e607850-341d-44f1-8990-7efc7b37faf2")
+		(uuid "70068509-12ab-43c6-8c12-a89207d7a05b")
 		(effects
 			(font
 				(size 1 1)
@@ -18,7 +18,7 @@
 		(at 0 4 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "d3e8950f-8a3d-4230-b8ed-2ead80e96fb3")
+		(uuid "c1d4415f-2fa0-46d7-8713-99d3d209d4f0")
 		(effects
 			(font
 				(size 1 1)
@@ -30,7 +30,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "257d3470-47d5-4779-b00a-64227fbea32d")
+		(uuid "12b3b4c1-fe3b-4182-842e-dee51b0db8b3")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "72c7aa9a-bcce-4ced-a71a-da1a94710a35")
+		(uuid "fdec2a0c-2f3a-4e78-bd53-0953590826af")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,7 +58,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000026")
+		(uuid "c7ce2dc9-be2e-4a14-b3e0-14250df4db01")
 	)
 	(pad "1" thru_hole rect
 		(at -2.54 0)
@@ -66,7 +66,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000020")
+		(uuid "45d52d1f-aaec-42cf-aca2-acd97c9df432")
 	)
 	(pad "2" thru_hole circle
 		(at 0 0)
@@ -74,7 +74,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000021")
+		(uuid "74206d9f-7846-42ca-a25b-c7b43c15179b")
 	)
 	(pad "3" thru_hole circle
 		(at 2.54 0)
@@ -82,7 +82,18 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000022")
+		(uuid "8bb07d5b-d14e-4f2f-a29c-ceff434ecd09")
 	)
 	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step"
+		(offset
+			(xyz -2.54 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

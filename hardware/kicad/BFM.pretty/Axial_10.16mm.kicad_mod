@@ -6,7 +6,7 @@
 	(property "Reference" "R1"
 		(at 0 -3 0)
 		(layer "F.SilkS")
-		(uuid "b34b1b48-90b2-4a3e-8bab-7bb2cde97d00")
+		(uuid "e2e038a2-d670-4b2d-934e-6e7b7dd11cdf")
 		(effects
 			(font
 				(size 1 1)
@@ -18,7 +18,7 @@
 		(at 0 3 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "60891cf9-677c-4bad-9b67-efda2045457a")
+		(uuid "2bd8edb5-cb37-41a3-b469-240f4efb2af7")
 		(effects
 			(font
 				(size 1 1)
@@ -30,7 +30,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "72455b6b-7e05-4688-9529-81dec00be873")
+		(uuid "f0cf057b-a974-4aa4-8d48-275168c6bfcd")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "97890db0-ac84-45d4-af23-350f1d0afb01")
+		(uuid "77e1599c-2487-45d1-8004-0c60b7a891ca")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,7 +58,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000019")
+		(uuid "751b5a35-9f14-4656-b010-b60be5775113")
 	)
 	(pad "1" thru_hole rect
 		(at -5.08 0)
@@ -66,7 +66,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000014")
+		(uuid "1327642e-f831-4bd0-9626-02a99493d7c3")
 	)
 	(pad "2" thru_hole circle
 		(at 5.08 0)
@@ -74,7 +74,18 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000015")
+		(uuid "ed836e9b-e6b6-42ed-92a9-a866e636f1bd")
 	)
 	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
+		(offset
+			(xyz -5.08 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

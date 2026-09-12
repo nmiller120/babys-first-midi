@@ -6,7 +6,7 @@
 	(property "Reference" "RV1"
 		(at 0 -6 0)
 		(layer "F.SilkS")
-		(uuid "e9dc36f9-fec7-4230-a704-44bb17c78525")
+		(uuid "85ee128d-5fd3-4396-b976-636e7031f85b")
 		(effects
 			(font
 				(size 1 1)
@@ -18,7 +18,7 @@
 		(at 0 6 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "060c8144-2955-41cf-b3e4-d52638ff3bf5")
+		(uuid "b1692b3c-1ae8-40cb-b202-6e8847d67496")
 		(effects
 			(font
 				(size 1 1)
@@ -30,7 +30,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "ecbc072f-81c5-4ce2-9d49-99593270f767")
+		(uuid "9769058c-16ff-402a-b256-a232dd0b8780")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "efb7fe13-a937-4e06-8bad-b1eaadc4c3c5")
+		(uuid "ba8259f0-2e98-4b02-987f-bc59b1b3c85a")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,12 +58,12 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000138")
+		(uuid "3678985e-d21f-47a3-856d-1f6dc3011476")
 	)
 	(fp_text user "OCTAVE"
 		(at 0 -2.2 0)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000134")
+		(uuid "4757e0c5-7991-4fa4-bb8a-b700847dab4d")
 		(effects
 			(font
 				(size 1 1)
@@ -77,7 +77,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000131")
+		(uuid "8f59613f-db9b-4d4b-aaea-ac5541df8fa0")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -85,7 +85,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000132")
+		(uuid "a0a30a91-d1f5-40e4-87e9-cea52f79afe4")
 	)
 	(pad "3" thru_hole circle
 		(at 3 2.5)
@@ -93,7 +93,18 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000133")
+		(uuid "e04390ec-0318-424f-a9ec-0dbecdf32705")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/Pot_Illustrative.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

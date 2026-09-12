@@ -35,3 +35,17 @@ board geometry and connectivity against the PCB net assignments; it does not
 certify component fit, Tiny 2350 mechanical orientation, or schematic parity.
 Select exact parts and check the schematic/pin mapping and physical dimensions
 before treating this as a manufacturing release.
+
+## Populated 3D view
+
+In PCB Editor, use View > 3D Viewer (Alt+3). Models are attached to the board
+and to the project footprint library. Resistors and MOSFETs use KiCad's standard
+STEP models; install the KiCad 10 3D model library if these do not appear.
+The custom RJ45, TRS jack, potentiometers and socketed Tiny module use the
+included `3dmodels/*_Illustrative.wrl` models. These are simplified visual aids
+matched to the draft footprints, not vendor models or evidence of mechanical
+fit/pinout correctness. In particular, the Tiny's illustrated right-facing USB
+connector remains a design intent that needs checking against the real module.
+
+Adding the models changes no pads, tracks, nets, or placement. KiCad 10.0.6
+DRC remains at zero violations and zero unconnected items.

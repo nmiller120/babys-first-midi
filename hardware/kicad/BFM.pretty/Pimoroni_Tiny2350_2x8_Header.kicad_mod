@@ -6,7 +6,7 @@
 	(property "Reference" "U1"
 		(at 0 -13.5 0)
 		(layer "F.SilkS")
-		(uuid "1e17ebaf-3461-4066-96e0-51f3dabe0589")
+		(uuid "ebc14f6c-eadb-4409-be62-30005f40772d")
 		(effects
 			(font
 				(size 1 1)
@@ -18,7 +18,7 @@
 		(at 0 13.5 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "07d78a58-5d52-41a3-a571-d3e6f61ab4eb")
+		(uuid "c3f444e5-b5d4-4963-877e-07ff02824597")
 		(effects
 			(font
 				(size 1 1)
@@ -30,7 +30,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "6c1d9332-cb97-4f30-af35-f3b49513dfdb")
+		(uuid "d2325752-e490-47fa-9ec4-6e2cc2f369ee")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,7 +41,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "66dcdb72-f4e5-412b-8c1c-f09b8d47c0a3")
+		(uuid "520887a7-1f8a-4e3c-b862-9d4159f7b5d1")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,12 +58,12 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "deadbeef-0000-4000-8000-000000000130")
+		(uuid "fe3a196b-b123-4a11-b8e0-769c9e1a61a7")
 	)
 	(fp_text user "Tiny 2350"
 		(at 0 0 90)
 		(layer "F.Fab")
-		(uuid "deadbeef-0000-4000-8000-000000000125")
+		(uuid "2f72d8e5-2d9e-476e-9cdb-3ba6f997a01e")
 		(effects
 			(font
 				(size 1.1 1.1)
@@ -74,7 +74,7 @@
 	(fp_text user "USB-C →"
 		(at 7 0 90)
 		(layer "F.Fab")
-		(uuid "deadbeef-0000-4000-8000-000000000126")
+		(uuid "7123ef24-b016-47c0-be74-e3c34e146396")
 		(effects
 			(font
 				(size 1 1)
@@ -88,7 +88,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000109")
+		(uuid "7ee034e1-04d4-4a5e-99a6-b083c899f389")
 	)
 	(pad "2" thru_hole circle
 		(at -7.62 -6.35)
@@ -96,7 +96,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000110")
+		(uuid "94e92b03-55d6-4c0e-9ed1-9c077df0b6b6")
 	)
 	(pad "3" thru_hole circle
 		(at -7.62 -3.81)
@@ -104,7 +104,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000111")
+		(uuid "8939a159-d5a4-4dd1-836c-90889fe0c96e")
 	)
 	(pad "4" thru_hole circle
 		(at -7.62 -1.27)
@@ -112,7 +112,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000112")
+		(uuid "ff0b9287-0829-4e16-95ae-c80903caad7a")
 	)
 	(pad "5" thru_hole circle
 		(at -7.62 1.27)
@@ -120,7 +120,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000113")
+		(uuid "9f3fa879-9874-4dca-a274-622bec845f69")
 	)
 	(pad "6" thru_hole circle
 		(at -7.62 3.81)
@@ -128,7 +128,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000114")
+		(uuid "de7eb320-0376-41f8-a488-82725848fd62")
 	)
 	(pad "7" thru_hole circle
 		(at -7.62 6.35)
@@ -136,7 +136,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000115")
+		(uuid "2409b3a7-c99f-4801-8de9-b28878acb9ef")
 	)
 	(pad "8" thru_hole circle
 		(at -7.62 8.89)
@@ -144,7 +144,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000116")
+		(uuid "23cdcaf0-9321-4f61-815d-34c9bc89b88f")
 	)
 	(pad "9" thru_hole circle
 		(at 7.62 -8.89)
@@ -152,7 +152,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000117")
+		(uuid "5daeae44-da76-418c-98f6-855301afe094")
 	)
 	(pad "10" thru_hole circle
 		(at 7.62 -6.35)
@@ -160,7 +160,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000118")
+		(uuid "f8f38ab6-a11c-4c79-a109-7ddc97e0fea4")
 	)
 	(pad "11" thru_hole circle
 		(at 7.62 -3.81)
@@ -168,7 +168,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000119")
+		(uuid "ab379083-7ce0-4d56-a4d8-e7b2827104aa")
 	)
 	(pad "12" thru_hole circle
 		(at 7.62 -1.27)
@@ -176,7 +176,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000120")
+		(uuid "5f1701ec-0787-4a16-bea2-2c2d4165bae3")
 	)
 	(pad "13" thru_hole circle
 		(at 7.62 1.27)
@@ -184,7 +184,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000121")
+		(uuid "7d6727ed-de77-464e-aca7-28c0c727b0b9")
 	)
 	(pad "14" thru_hole circle
 		(at 7.62 3.81)
@@ -192,7 +192,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000122")
+		(uuid "79aae10c-12e1-4171-b773-4c5037fb0748")
 	)
 	(pad "15" thru_hole circle
 		(at 7.62 6.35)
@@ -200,7 +200,7 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000123")
+		(uuid "d4e78821-b255-43a5-ba3f-7a40a29eac35")
 	)
 	(pad "16" thru_hole circle
 		(at 7.62 8.89)
@@ -208,7 +208,18 @@
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "deadbeef-0000-4000-8000-000000000124")
+		(uuid "87963679-c8a4-4a15-825c-556da8d0f81e")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/Tiny2350_Illustrative.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )
