@@ -1,8 +1,9 @@
 # Drawing-based replacement models
 
 The WH148 potentiometers and Tiny 2350 now use custom drawing-based models.
-The RJ45 model remains an illustrative placeholder; its footprint still
-requires checking against the actual purchased part.
+The RJ45 now uses a model and footprint built from the supplied mechanical
+drawing. Its contact numbering is a user-approved prototype assumption pending
+physical checking; see ../RJ45_CONTINUITY_CHECK.md.
 
 ## WH148 potentiometers
 

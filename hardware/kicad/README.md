@@ -38,7 +38,7 @@ it does not certify the remaining connector fit, enclosure fit or schematic pari
 In PCB Editor, use View > 3D Viewer (Alt+3). Models are attached to the board
 and to the project footprint library. Resistors and MOSFETs use KiCad's standard
 STEP models; install the KiCad 10 3D model library if these do not appear.
-The RJ45 still uses an illustrative model. The WH148 pots and Tiny
+The RJ45 uses a drawing-based model. The WH148 pots and Tiny
 2350 now use the bundled drawing-based replacement models. Their geometry,
 source drawings and remaining estimates are documented in
 `3dmodels/MECHANICAL_NOTES.md`.
@@ -55,3 +55,12 @@ The user-supplied pinout maps MIDI_TIP to pin 4 and MIDI_RING to pin 3; pins 1
 (sleeve, as before) and 2 (ring2) are unconnected. The mouth faces the right
 edge. See `3dmodels/MECHANICAL_NOTES.md` for source attribution and geometry
 limits. The replacement is rerouted and passes DRC with no unconnected items.
+
+J1 now uses BFM:RJ45_FMHXG_AssumedPinout and a drawing-based model, facing the
+left edge. The 8 signal holes, 2 locating holes and 2 shield holes follow the
+user-supplied drawing. Sequential 1-8 numbering is an explicit prototype
+assumption approved by the user, not a verified vendor pinout. Existing numbered
+signal nets are preserved; shield pads are unconnected. See
+`RJ45_CONTINUITY_CHECK.md` for the precise mapping to check when the parts arrive.
+Rerouting and ground refill pass KiCad 10.0.6 DRC: zero violations and zero
+unconnected items.
